@@ -99,12 +99,12 @@ void ndn_app::on_chat_app_clicked()
         chatList = new QProcess(this);
         DIR *dir;
         std::string g_Path;
-        if ((dir=opendir(std::string("./Dependencies/").c_str())) != NULL)
+        if ((dir=opendir(std::string("./chat-Release/").c_str())) != NULL)
          {
-            g_Path = "./Dependencies/";
+            g_Path = "./chat-Release/";
         }
-        else if((dir=opendir(std::string("../Dependencies/").c_str())) != NULL){
-            g_Path = "../Dependencies/";
+        else if((dir=opendir(std::string("../chat-Release/").c_str())) != NULL){
+            g_Path = "../chat-Release/";
         }
         if (g_Path == "")
          {
@@ -115,7 +115,7 @@ void ndn_app::on_chat_app_clicked()
              return;
         }
         QString strCmd;
-        strCmd = QString::fromStdString(g_Path+std::string("chat_app/app"));
+        strCmd = QString::fromStdString(g_Path+std::string("app"));
         chatList->start("bash", QStringList() <<"-c" << strCmd);
     }
     catch(const std::exception& e){
